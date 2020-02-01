@@ -40,5 +40,7 @@ const observer = {
 };
 
 //arrayObservable.subscribe(observer);
-let mapObservable = arrayObservable.map(x => x / 10);
-  mapObservable.subscribe(observer);
+// let mapObservable = arrayObservable.map(x => x / 10);
+//   mapObservable.subscribe(observer);
+
+arrayObservable.map(x => x / 5).subscribe(observer);
