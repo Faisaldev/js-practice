@@ -1,22 +1,22 @@
 function map(transformFn) {
-    const inputObservable = this;
-    const outputObservable = createObservable(function subscribe(outputObserver) {
-        inputObservable.subscribe({
-            next: function(x){
-                const y = transformFn(x);
-                outputObserver.next(y);
-            },
-            error: e => outputObserver.error(e),
-            complete: () => outputObserver.complete()
-        });
+  const inputObservable = this;
+  const outputObservable = createObservable(function subscribe(outputObserver) {
+    inputObservable.subscribe({
+      next: function (x) {
+        const y = transformFn(x);
+        outputObserver.next(y);
+      },
+      error: e => outputObserver.error(e),
+      complete: () => outputObserver.complete()
     });
-    return outputObservable;
+  });
+  return outputObservable;
 }
 
 function createObservable(subscribe) {
-  const observable={
-      subscribe: subscribe,
-      map: map
+  const observable = {
+    subscribe: subscribe,
+    map: map
   };
 
   return observable;
